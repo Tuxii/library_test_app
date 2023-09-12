@@ -1,0 +1,31 @@
+<article id="<%= dom_id book %>" class="flex-container">
+  <div class="flex-child">
+    <%= image_tag book.cover_url if book.cover_url.present? %>
+  </div>
+
+  <div class="flex-child text-center">
+    <h4 ><%= link_to book.title, book %></h2>
+    <small>By <%= book.author %></small>
+
+    <p>
+      <%= book.description %>
+    </p>
+
+    <p>
+      <strong>ISBN:</strong>
+      <%= book.isbn %>
+    </p>
+
+    <p>
+      <strong><%= book.pages_count %></strong> pages
+    </p>
+
+    <% if user_signed_in? %>
+      <% if book.borrower == current_user %>
+        <%= button_to "Return this book", book_borrowings_path(book), method: :delete %>
+      <% else %>
+        <%= button_to "Borrow this book", book_borrowings_path(book), disabled: current_user.books.count >= User::MAX_BOOK_COUNT %>
+      <% end %>
+    <% end %>
+  <div>
+</article>
