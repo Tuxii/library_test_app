@@ -8,5 +8,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, foreign_key: :borrower_id
+
   validates :books, length: { maximum: MAX_BOOK_COUNT }
 end

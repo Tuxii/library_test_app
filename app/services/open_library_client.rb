@@ -14,7 +14,7 @@ class OpenLibraryClient
   def cover_url(cover_id)
     url = "https://covers.openlibrary.org/b/id/#{cover_id}-L.jpg"
     response = Faraday.get(url)
-    return nil if response.status != 200
+    return nil if response.body.bytesize < 1000
     url
   end
 end
