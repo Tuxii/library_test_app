@@ -18,7 +18,6 @@ export default class extends Controller {
   }
 
   updateTitleParams(){
-    console.log(this.fetchButtonTarget)
     let input = this.fetchButtonTarget.parentElement.lastChild
     input.value = this.titleTarget.value
   }

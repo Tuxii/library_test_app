@@ -1,4 +1,4 @@
-<% if controller.class.name.deconstantize == "Users" %>
+<% if controller.class.name&.deconstantize == "Users" %>
   <h1 class="text-center">My Books</h1>
 <% else %>
   <h1 class="text-center">Book Library</h1>
